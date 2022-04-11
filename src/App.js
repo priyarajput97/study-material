@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import StyledComponentEg from "./components/StyledComponentEg";
+import { ThemeProvider } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+
+const theme = {
+  dark: {
+    primary: "#383838",
+    text: "#F2F2F2",
+  },
+  light: {
+    primary: "#F2F2F2",
+    text: "#383838",
+  },
+};
+
+const GlobalStyles = createGlobalStyle`
+  * {
+    font-family: Roboto
+  }`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div className="App">
+        <StyledComponentEg />
+      </div>
+    </ThemeProvider>
   );
 }
 
